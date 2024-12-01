@@ -1,54 +1,82 @@
 from tests.utils.http_methods import HttpMethods
 
-base_url = "https://automationexercise.com"
-
 class AutomationExerciseAPI:
+    base_url = "https://automationexercise.com"
+    test_email = "max245124512451@gmail.com"
+    test_password = "password123"
 
     @staticmethod
-    def search_product(search_query):
-        data_for_search_product = {
-            "search_product": search_query
+    def search_product():
+        """Метод для поиска продукта."""
+        data = {
+            "search_product": "Shirt"
         }
-        post_resource_search_product = "/api/searchProduct"
-        post_url_search_product = base_url + post_resource_search_product
-        print(post_url_search_product)
-        result_post = HttpMethods.post(post_url_search_product, data_for_search_product)
-        print(result_post.text)
-        return result_post
+        url = f"{AutomationExerciseAPI.base_url}/api/searchProduct"
+        print(url)
+        result = HttpMethods.post(url, data)
+        print(result.text)
+        return result
 
     @staticmethod
-    def create_user(data):
-        post_resource_create_user = "/api/createAccount"
-        post_url_create_user = base_url + post_resource_create_user
-        print(post_url_create_user)
-        result_post = HttpMethods.post(post_url_create_user, data)
-        print(result_post.text)
-        return result_post
+    def create_user():
+        """Метод для создания пользователя."""
+        data = {
+            "name": "Test User",
+            "email": AutomationExerciseAPI.test_email,
+            "password": AutomationExerciseAPI.test_password,
+            "title": "Mr",
+            "birth_date": "1",
+            "birth_month": "January",
+            "birth_year": "1990",
+            "firstname": "Test",
+            "lastname": "User",
+            "company": "TestCompany",
+            "address1": "123 Test St",
+            "address2": "Suite 456",
+            "country": "United States",
+            "zipcode": "12345",
+            "state": "CA",
+            "city": "Test City",
+            "mobile_number": "1234567890"
+        }
+        url = f"{AutomationExerciseAPI.base_url}/api/createAccount"
+        print(url)
+        result = HttpMethods.post(url, data)
+        print(result.text)
+        return result
 
     @staticmethod
-    def verify_login(data):
-        post_resource_verify_login = "/api/verifyLogin"
-        post_url_verify_login = base_url + post_resource_verify_login
-        print(post_url_verify_login)
-        result_post = HttpMethods.post(post_url_verify_login, data)
-        print(result_post.text)
-        return result_post
+    def verify_login():
+        """Метод для проверки входа пользователя."""
+        data = {
+            "email": AutomationExerciseAPI.test_email,
+            "password": AutomationExerciseAPI.test_password
+        }
+        url = f"{AutomationExerciseAPI.base_url}/api/verifyLogin"
+        print(url)
+        result = HttpMethods.post(url, data)
+        print(result.text)
+        return result
 
     @staticmethod
-    def delete_user(data):
-        delete_resource_delete_user = "/api/deleteAccount"
-        delete_url_delete_user = base_url + delete_resource_delete_user
-        print(delete_url_delete_user)
-        result_delete = HttpMethods.delete(delete_url_delete_user, data)
-        print(result_delete.text)
-        return result_delete
+    def delete_user():
+        """Метод для удаления пользователя."""
+        data = {
+            "email": AutomationExerciseAPI.test_email,
+            "password": AutomationExerciseAPI.test_password
+        }
+        url = f"{AutomationExerciseAPI.base_url}/api/deleteAccount"
+        print(url)
+        result = HttpMethods.delete(url, data)
+        print(result.text)
+        return result
 
     @staticmethod
-    def get_user_details_by_email(email):
-        get_resource_user_details = "/api/getUserDetailByEmail"
-        get_url_user_details = base_url + get_resource_user_details
-        print(get_url_user_details)
-        params = {'email': email}
-        result_get = HttpMethods.get(get_url_user_details, params=params)
-        print(result_get.text)
-        return result_get
+    def get_user_details_by_email():
+        """Метод для получения деталей пользователя по email."""
+        params = {'email': AutomationExerciseAPI.test_email}
+        url = f"{AutomationExerciseAPI.base_url}/api/getUserDetailByEmail"
+        print(url)
+        result = HttpMethods.get(url, params=params)
+        print(result.text)
+        return result
