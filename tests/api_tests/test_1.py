@@ -1,7 +1,7 @@
 import json
 import requests
 
-def test_1():    # Ваши данные для создания пользователя
+def test_1():
     user_data = {
         "name": "Test User",
         "email": "max245124512451@gmail.com",
@@ -25,11 +25,9 @@ def test_1():    # Ваши данные для создания пользов�
     url = "https://automationexercise.com/create_account"
     headers = {'Content-Type': 'application/json'}
 
-    # Выводим запрос, который отправляется
     print("Request data:", json.dumps(user_data))
 
     response = requests.post(url, json=user_data, headers=headers)
 
-    # Выводим ответ сервера
     print(response.text)
     print(response.status_code)
