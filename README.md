@@ -8,3 +8,5 @@
 
 
 
+-pytest
+-allure serve

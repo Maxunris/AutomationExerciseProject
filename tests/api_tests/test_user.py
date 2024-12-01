@@ -1,6 +1,10 @@
 from tests.utils.api import AutomationExerciseAPI
+import allure
 
+
+@allure.epic("Тесты с пользователем")
 class TestUser:
+    @allure.description("Создание, проверка на существование, проверка на описание, удаление пользователя")
     def test_create_user(self):
         response = AutomationExerciseAPI.create_user()
         assert response.status_code == 200, f"Ожидался статус 200, получили {response.status_code}"
