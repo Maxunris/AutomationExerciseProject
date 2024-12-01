@@ -26,7 +26,7 @@ class TestUser:
             "mobile_number": "1234567890"
         }
 
-        response: Response = AutomationExerciseAPI.create_user(user_data)
+        response = AutomationExerciseAPI.create_user(user_data)
         print(response.text)
         print(response.status_code)
         assert response.status_code == 200, f"Ожидался статус 200, получили {response.status_code}"
@@ -41,7 +41,7 @@ class TestUser:
             "password": "password123"
         }
 
-        response: Response = AutomationExerciseAPI.verify_login(login_data)
+        response = AutomationExerciseAPI.verify_login(login_data)
         print(response.text)
         assert response.status_code == 200, f"Ожидался статус 200, получили {response.status_code}"
         assert "User exists!" in response.text, f"Ожидали 'User exists!' в ответе, получили {response.text}"
@@ -50,7 +50,7 @@ class TestUser:
     def test_get_user_details(self):
         email = "max245124512451@gmail.com"
 
-        response: Response = AutomationExerciseAPI.get_user_details_by_email(email)
+        response = AutomationExerciseAPI.get_user_details_by_email(email)
         print(response.text)
 
         assert response.status_code == 200, f"Ожидался статус 200, получили {response.status_code}"
@@ -80,7 +80,7 @@ class TestUser:
             "email": email,
             "password": "password123"
         }
-        response: Response = AutomationExerciseAPI.delete_user(delete_data)
+        response = AutomationExerciseAPI.delete_user(delete_data)
         print(response.text)
         assert response.status_code == 200, f"Ожидался статус 200, получили {response.status_code}"
         assert "Account deleted!" in response.text, f"Ожидали 'Account deleted!' в ответе, получили {response.text}"
