@@ -10,4 +10,3 @@
 
 -pytest
 -allure serve
-
