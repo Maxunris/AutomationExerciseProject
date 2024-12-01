@@ -1,12 +1,12 @@
 import requests
 
 class HttpMethods:
-    headers = {'Content-type': 'application/x-www-form-urlencoded'}  # Передаем данные как x-www-form-urlencoded
+    headers = {'Content-type': 'application/x-www-form-urlencoded'}
     cookie = ""
 
     @staticmethod
-    def get(url):
-        result = requests.get(url, headers=HttpMethods.headers, cookies=HttpMethods.cookie)
+    def get(url, params=None):
+        result = requests.get(url, headers=HttpMethods.headers, cookies=HttpMethods.cookie, params=params)
         return result
 
     @staticmethod

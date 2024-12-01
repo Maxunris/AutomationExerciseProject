@@ -42,3 +42,13 @@ class AutomationExerciseAPI:
         result_delete = HttpMethods.delete(delete_url_delete_user, data)
         print(result_delete.text)
         return result_delete
+
+    @staticmethod
+    def get_user_details_by_email(email):
+        get_resource_user_details = "/api/getUserDetailByEmail"
+        get_url_user_details = base_url + get_resource_user_details
+        print(get_url_user_details)
+        params = {'email': email}
+        result_get = HttpMethods.get(get_url_user_details, params=params)
+        print(result_get.text)
+        return result_get
