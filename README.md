@@ -10,3 +10,5 @@
 
 -pytest
 -allure serve
+
+docker-compose up --build
